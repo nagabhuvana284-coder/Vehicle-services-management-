@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - Vehicle Service Management</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5eef8;
+            color: #333;
+        }
+
+        /* HEADER */
+
+        header {
+            background: linear-gradient(90deg, #6a1b9a, #ab47bc);
+            color: white;
+            padding: 18px 35px;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            font-size: 27px;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 22px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd6ff;
+        }
+
+
+        /* HERO */
+
+        .admin-hero {
+
+            height: 250px;
+
+            background:
+            linear-gradient(
+                rgba(30, 10, 40, 0.70),
+                rgba(30, 10, 40, 0.70)
+            ),
+            url("admin.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            text-align: center;
+        }
+
+        .admin-hero h2 {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .admin-hero p {
+            font-size: 18px;
+        }
+
+
+        /* DASHBOARD */
+
+        .container {
+
+            width: 90%;
+            max-width: 1200px;
+
+            margin: 35px auto;
+        }
+
+        .section-title {
+
+            text-align: center;
+            color: #7b1fa2;
+
+            font-size: 28px;
+
+            margin-bottom: 25px;
+        }
+
+
+        /* STATISTICS */
+
+        .stats {
+
+            display: grid;
+
+            grid-template-columns:
+            repeat(4, 1fr);
+
+            gap: 20px;
+        }
+
+
+        .stat-card {
+
+            background: white;
+
+            padding: 25px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            box-shadow:
+            0 5px 18px
+            rgba(80, 20, 100, 0.15);
+
+            transition: 0.3s;
+        }
+
+        .stat-card:hover {
+
+            transform: translateY(-5px);
+
+        }
+
+        .stat-card .icon {
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+        }
+
+        .stat-card h3 {
+
+            color: #7b1fa2;
+
+            font-size: 30px;
+
+            margin-bottom: 5px;
+        }
+
+        .stat-card p {
+
+            color: #666;
+
+            font-weight: bold;
+        }
+
+
+        /* ADMIN OPTIONS */
+
+        .options {
+
+            margin-top: 45px;
+
+            display: grid;
+
+            grid-template-columns:
+            repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .option-card {
+
+            background: white;
+
+            padding: 28px;
+
+            border-radius: 15px;
+
+            text-align: center;
+
+            box-shadow:
+            0 5px 18px
+            rgba(80, 20, 100, 0.15);
+        }
+
+        .option-card .option-icon {
+
+            font-size: 40px;
+
+            margin-bottom: 12px;
+        }
+
+        .option-card h3 {
+
+            color: #7b1fa2;
+
+            margin-bottom: 10px;
+        }
+
+        .option-card p {
+
+            color: #666;
+
+            font-size: 14px;
+
+            line-height: 1.5;
+        }
+
+        .option-card button {
+
+            margin-top: 18px;
+
+            padding: 10px 22px;
+
+            border: none;
+
+            border-radius: 7px;
+
+            background:
+            linear-gradient(
+                90deg,
+                #8e24aa,
+                #c03bc9
+            );
+
+            color: white;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        .option-card button:hover {
+
+            background: #6a1b9a;
+        }
+
+
+        /* SERVICE TABLE */
+
+        .services {
+
+            margin-top: 50px;
+        }
+
+        .table-container {
+
+            overflow-x: auto;
+        }
+
+        table {
+
+            width: 100%;
+
+            border-collapse: collapse;
+
+            background: white;
+
+            box-shadow:
+            0 5px 18px
+            rgba(80, 20, 100, 0.15);
+
+            border-radius: 10px;
+
+            overflow: hidden;
+        }
+
+        th {
+
+            background: #8e24aa;
+
+            color: white;
+
+            padding: 14px;
+        }
+
+        td {
+
+            padding: 13px;
+
+            text-align: center;
+
+            border-bottom:
+            1px solid #eee;
+        }
+
+        tr:hover {
+
+            background: #faf2ff;
+        }
+
+
+        /* STATUS */
+
+        .status {
+
+            padding: 6px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        .pending {
+
+            background: #fff3cd;
+
+            color: #856404;
+        }
+
+        .progress {
+
+            background: #cfe2ff;
+
+            color: #084298;
+        }
+
+        .completed {
+
+            background: #d1e7dd;
+
+            color: #0f5132;
+        }
+
+
+        /* LOGIN */
+
+        .login-section {
+
+            margin: 50px auto;
+
+            max-width: 450px;
+
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 15px;
+
+            box-shadow:
+            0 5px 20px
+            rgba(80, 20, 100, 0.18);
+        }
+
+        .login-section h2 {
+
+            text-align: center;
+
+            color: #7b1fa2;
+
+            margin-bottom: 20px;
+        }
+
+        label {
+
+            display: block;
+
+            margin-top: 12px;
+
+            font-weight: bold;
+
+            color: #555;
+        }
+
+        input {
+
+            width: 100%;
+
+            padding: 12px;
+
+            margin-top: 6px;
+
+            border:
+            1px solid #ccc;
+
+            border-radius: 7px;
+        }
+
+        input:focus {
+
+            outline: none;
+
+            border-color: #9c27b0;
+        }
+
+        .login-btn {
+
+            width: 100%;
+
+            padding: 13px;
+
+            margin-top: 20px;
+
+            border: none;
+
+            border-radius: 8px;
+
+            background:
+            linear-gradient(
+                90deg,
+                #8e24aa,
+                #c03bc9
+            );
+
+            color: white;
+
+            font-size: 16px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+
+        /* FOOTER */
+
+        footer {
+
+            margin-top: 50px;
+
+            background: #35103d;
+
+            color: white;
+
+            text-align: center;
+
+            padding: 22px;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+
+            .stats {
+
+                grid-template-columns:
+                repeat(2, 1fr);
+            }
+
+            .options {
+
+                grid-template-columns:
+                repeat(2, 1fr);
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            header {
+
+                flex-direction: column;
+
+                gap: 15px;
+
+                text-align: center;
+            }
+
+            nav a {
+
+                margin: 7px;
+
+                display: inline-block;
+            }
+
+            .admin-hero h2 {
+
+                font-size: 30px;
+            }
+
+            .stats {
+
+                grid-template-columns: 1fr;
+            }
+
+            .options {
+
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <h1>
+        VEHICLE SERVICE MANAGEMENT
+    </h1>
+
+    <nav>
+
+        <a href="Home.html">
+            Home
+        </a>
+
+        <a href="Customer.html">
+            Customer
+        </a>
+
+        <a href="Mechanics.html">
+            Mechanics
+        </a>
+
+        <a href="Admin.html">
+            Admin
+        </a>
+	 <a href="About.html">
+            About us
+        </a>
+	 <a href="Contact.html">
+            Contact us
+        </a>
+
+
+
+    </nav>
+
+</header>
+
+
+
+<!-- ADMIN HERO -->
+
+<section class="admin-hero">
+
+    <h2>
+        ADMIN DASHBOARD
+    </h2>
+
+    <p>
+        Manage Customers, Mechanics, Vehicles & Services
+    </p>
+
+</section>
+
+
+
+<div class="container">
+
+
+<!-- STATISTICS -->
+
+<h2 class="section-title">
+    Service Management Overview
+</h2>
+
+
+<div class="stats">
+
+
+    <div class="stat-card">
+
+        <div class="icon">
+            👥
+        </div>
+
+        <h3>
+            120
+        </h3>
+
+        <p>
+            Total Customers
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <div class="icon">
+            🔧
+        </div>
+
+        <h3>
+            18
+        </h3>
+
+        <p>
+            Total Mechanics
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <div class="icon">
+            🚗
+        </div>
+
+        <h3>
+            156
+        </h3>
+
+        <p>
+            Total Vehicles
+        </p>
+
+    </div>
+
+
+
+    <div class="stat-card">
+
+        <div class="icon">
+            🛠️
+        </div>
+
+        <h3>
+            89
+        </h3>
+
+        <p>
+            Total Services
+        </p>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- ADMIN OPTIONS -->
+
+<h2 class="section-title"
+    style="margin-top:50px;">
+
+    Administration
+
+</h2>
+
+
+<div class="options">
+
+
+    <div class="option-card">
+
+        <div class="option-icon">
+            👥
+        </div>
+
+        <h3>
+            Manage Customers
+        </h3>
+
+        <p>
+            View and manage registered
+            customer information.
+        </p>
+
+        <button>
+            View Customers
+        </button>
+
+    </div>
+
+
+
+    <div class="option-card">
+
+        <div class="option-icon">
+            🔧
+        </div>
+
+        <h3>
+            Manage Mechanics
+        </h3>
+
+        <p>
+            Add, update and manage
+            mechanics.
+        </p>
+
+        <button>
+            View Mechanics
+        </button>
+
+    </div>
+
+
+
+    <div class="option-card">
+
+        <div class="option-icon">
+            🚗
+        </div>
+
+        <h3>
+            Manage Vehicles
+        </h3>
+
+        <p>
+            View customer vehicles
+            and their service history.
+        </p>
+
+        <button>
+            View Vehicles
+        </button>
+
+    </div>
+
+
+
+    <div class="option-card">
+
+        <div class="option-icon">
+            📅
+        </div>
+
+        <h3>
+            Service Bookings
+        </h3>
+
+        <p>
+            Manage customer service
+            bookings and appointments.
+        </p>
+
+        <button>
+            View Bookings
+        </button>
+
+    </div>
+
+
+
+    <div class="option-card">
+
+        <div class="option-icon">
+            📋
+        </div>
+
+        <h3>
+            Service Records
+        </h3>
+
+        <p>
+            Monitor completed and
+            pending vehicle services.
+        </p>
+
+        <button>
+            View Records
+        </button>
+
+    </div>
+
+
+
+    <div class="option-card">
+
+        <div class="option-icon">
+            💰
+        </div>
+
+        <h3>
+            Payments
+        </h3>
+
+        <p>
+            Manage service charges
+            and payment records.
+        </p>
+
+        <button>
+            View Payments
+        </button>
+
+    </div>
+
+
+</div>
+
+
+
+<!-- SERVICE REQUEST TABLE -->
+
+<div class="services">
+
+    <h2 class="section-title">
+        Recent Service Requests
+    </h2>
+
+
+    <div class="table-container">
+
+        <table>
+
+            <tr>
+
+                <th>
+                    Service ID
+                </th>
+
+                <th>
+                    Customer
+                </th>
+
+                <th>
+                    Vehicle
+                </th>
+
+                <th>
+                    Mechanic
+                </th>
+
+                <th>
+                    Service
+                </th>
+
+                <th>
+                    Status
+                </th>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    SV001
+                </td>
+
+                <td>
+                    Ravi Kumar
+                </td>
+
+                <td>
+                    Car
+                </td>
+
+                <td>
+                    Ramesh
+                </td>
+
+                <td>
+                    Engine Service
+                </td>
+
+                <td>
+
+                    <span class="status pending">
+                        Pending
+                    </span>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    SV002
+                </td>
+
+                <td>
+                    Sneha
+                </td>
+
+                <td>
+                    Bike
+                </td>
+
+                <td>
+                    Suresh
+                </td>
+
+                <td>
+                    Oil Change
+                </td>
+
+                <td>
+
+                    <span class="status progress">
+                        In Progress
+                    </span>
+
+                </td>
+
+            </tr>
+
+
+            <tr>
+
+                <td>
+                    SV003
+                </td>
+
+                <td>
+                    Rahul
+                </td>
+
+                <td>
+                    Car
+                </td>
+
+                <td>
+                    Mahesh
+                </td>
+
+                <td>
+                    Brake Service
+                </td>
+
+                <td>
+
+                    <span class="status completed">
+                        Completed
+                    </span>
+
+                </td>
+
+            </tr>
+
+
+        </table>
+
+    </div>
+
+</div>
+
+
+
+<!-- ADMIN LOGIN -->
+
+<div class="login-section">
+
+    <h2>
+        🔐 Admin Login
+    </h2>
+
+
+    <form>
+
+        <label>
+            Admin Username
+        </label>
+
+        <input
+            type="text"
+            placeholder="Enter admin username"
+        >
+
+
+        <label>
+            Password
+        </label>
+
+        <input
+            type="password"
+            placeholder="Enter password"
+        >
+
+
+        <button
+            class="login-btn"
+            type="submit">
+
+            Admin Login
+
+        </button>
+
+    </form>
+
+</div>
+
+
+</div>
+
+
+
+<!-- FOOTER -->
+
+<footer>
+
+    <p>
+        © 2026 Vehicle Service Management System
+    </p>
+
+    <p>
+        Admin Panel | Vehicle Service Management
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

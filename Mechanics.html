@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mechanics - Vehicle Service Management</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4eafa;
+            color: #333;
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(90deg, #8e24aa, #c03bc9);
+            color: white;
+            padding: 18px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 28px;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 25px;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #ffd6ff;
+        }
+
+        /* HERO */
+        .hero {
+            height: 300px;
+            background:
+                linear-gradient(rgba(20, 5, 35, 0.65), rgba(20, 5, 35, 0.65)),
+                url("mechanic.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            color: white;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 19px;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 35px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            color: #7b1fa2;
+            font-size: 28px;
+            margin-bottom: 25px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            width: 470px;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(90, 30, 100, 0.18);
+        }
+
+        .card h3 {
+            text-align: center;
+            color: #8e24aa;
+            margin-bottom: 22px;
+            font-size: 24px;
+        }
+
+        /* FORM */
+        label {
+            display: block;
+            margin-top: 12px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            margin-top: 6px;
+            border: 1px solid #ccc;
+            border-radius: 7px;
+            font-size: 15px;
+        }
+
+        input:focus,
+        select:focus {
+            outline: none;
+            border-color: #9c27b0;
+            box-shadow: 0 0 5px rgba(156, 39, 176, 0.3);
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 22px;
+            padding: 13px;
+            border: none;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #8e24aa, #c03bc9);
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #6a1b9a;
+        }
+
+        /* SERVICES */
+        .services {
+            margin-top: 50px;
+        }
+
+        .service-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 5px 20px rgba(90, 30, 100, 0.15);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .service-table th {
+            background: #8e24aa;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        .service-table td {
+            padding: 14px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .service-table tr:hover {
+            background: #faf0ff;
+        }
+
+        /* STATUS */
+        .status {
+            padding: 7px 12px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .pending {
+            background: #fff3cd;
+            color: #856404;
+        }
+
+        .progress {
+            background: #cfe2ff;
+            color: #084298;
+        }
+
+        .completed {
+            background: #d1e7dd;
+            color: #0f5132;
+        }
+
+        /* FOOTER */
+        footer {
+            margin-top: 50px;
+            background: #35103d;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        /* MOBILE */
+        @media (max-width: 700px) {
+
+            header {
+                flex-direction: column;
+                gap: 15px;
+                text-align: center;
+            }
+
+            nav a {
+                margin: 8px;
+                display: inline-block;
+            }
+
+            .hero h2 {
+                font-size: 30px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .card {
+                width: 100%;
+            }
+
+            .service-table {
+                font-size: 12px;
+            }
+
+            .service-table th,
+            .service-table td {
+                padding: 8px;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+
+    <header>
+
+        <h1>VEHICLE SERVICE MANAGEMENT</h1>
+
+        <nav>
+            <a href="Home.html">Home</a>
+            <a href="Customer.html">Customer</a>
+            <a href="Mechanics.html">Mechanics</a>
+	    <a href="Admin.html">Admin</a>
+            <a href="About.html">About Us</a>
+            <a href="Contact.html">Contact Us</a>
+        </nav>
+
+    </header>
+
+
+    <!-- HERO SECTION -->
+
+    <section class="hero">
+
+        <h2>MECHANIC SERVICES</h2>
+
+        <p>Skilled Mechanics • Reliable Service • Better Vehicles</p>
+
+    </section>
+
+
+    <!-- REGISTRATION AND LOGIN -->
+
+    <div class="container">
+
+        <h2 class="section-title">Mechanic Management</h2>
+
+        <div class="cards">
+
+
+            <!-- REGISTRATION -->
+
+            <div class="card">
+
+                <h3>🔧 Mechanic Registration</h3>
+
+                <form>
+
+                    <label>Mechanic Name</label>
+                    <input type="text" placeholder="Enter mechanic name">
+
+                    <label>Phone Number</label>
+                    <input type="tel" placeholder="Enter phone number">
+
+                    <label>Email</label>
+                    <input type="email" placeholder="Enter email">
+
+                    <label>Specialization</label>
+
+                    <select>
+
+                        <option>Select Specialization</option>
+                        <option>Engine Repair</option>
+                        <option>Electrical Repair</option>
+                        <option>Brake Service</option>
+                        <option>AC Service</option>
+                        <option>General Service</option>
+                        <option>Tyre & Wheel Service</option>
+
+                    </select>
+
+                    <label>Experience</label>
+                    <input type="text" placeholder="Example: 5 Years">
+
+                    <label>Username</label>
+                    <input type="text" placeholder="Create username">
+
+                    <label>Password</label>
+                    <input type="password" placeholder="Create password">
+
+                    <button class="btn" type="submit">
+                        Register Mechanic
+                    </button>
+
+                </form>
+
+            </div>
+
+
+            <!-- LOGIN -->
+
+            <div class="card">
+
+                <h3>🔐 Mechanic Login</h3>
+
+                <form>
+
+                    <label>Username</label>
+
+                    <input type="text"
+                           placeholder="Enter username">
+
+
+                    <label>Password</label>
+
+                    <input type="password"
+                           placeholder="Enter password">
+
+
+                    <button class="btn" type="submit">
+                        Login
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+
+        <!-- ASSIGNED SERVICES -->
+
+        <div class="services">
+
+            <h2 class="section-title">
+                Assigned Vehicle Services
+            </h2>
+
+
+            <table class="service-table">
+
+                <tr>
+
+                    <th>Service ID</th>
+                    <th>Customer</th>
+                    <th>Vehicle</th>
+                    <th>Service</th>
+                    <th>Date</th>
+                    <th>Status</th>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>SV001</td>
+                    <td>Ravi Kumar</td>
+                    <td>Car</td>
+                    <td>Engine Service</td>
+                    <td>23-08-2026</td>
+
+                    <td>
+                        <span class="status pending">
+                            Pending
+                        </span>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>SV002</td>
+                    <td>Sneha</td>
+                    <td>Bike</td>
+                    <td>Oil Change</td>
+                    <td>23-08-2026</td>
+
+                    <td>
+                        <span class="status progress">
+                            In Progress
+                        </span>
+                    </td>
+
+                </tr>
+
+
+                <tr>
+
+                    <td>SV003</td>
+                    <td>Rahul</td>
+                    <td>Car</td>
+                    <td>Brake Service</td>
+                    <td>22-08-2026</td>
+
+                    <td>
+                        <span class="status completed">
+                            Completed
+                        </span>
+                    </td>
+
+                </tr>
+
+            </table>
+
+        </div>
+
+    </div>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <p>© 2026 Vehicle Service Management System</p>
+        <p>Professional Vehicle Care & Maintenance</p>
+
+    </footer>
+
+
+</body>
+</html>

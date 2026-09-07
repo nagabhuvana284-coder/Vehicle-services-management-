@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vehicle Service Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f0f7;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(90deg, #b83fc4, #7b2cbf);
+            color: white;
+            text-align: center;
+            padding: 25px 10px;
+        }
+
+        header h1 {
+            font-size: 36px;
+            letter-spacing: 1px;
+        }
+
+        /* Navigation */
+        nav {
+            background: white;
+            text-align: center;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #5a176d;
+            font-size: 18px;
+            margin: 0 25px;
+            font-weight: bold;
+        }
+
+        nav a:hover {
+            color: #c13dcc;
+        }
+
+        /* Main Image */
+        .hero {
+            width: 100%;
+            height: 520px;
+            background-image: url("vehicle.jpg");
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        /* Slight dark overlay */
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.15);
+        }
+
+        /* Bottom Brand Section */
+        .brands {
+            background: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+
+        .brands h2 {
+            color: #6a1b7b;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .brand-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 45px;
+            flex-wrap: wrap;
+        }
+
+        .brand-container img {
+            width: 100px;
+            height: 60px;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+
+        .brand-container img:hover {
+            transform: scale(1.15);
+        }
+
+        /* Footer */
+        footer {
+            background: #35103d;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>VEHICLE SERVICE MANAGEMENT</h1>
+    </header>
+
+    <nav>
+        <a href="Home.html">Home</a>
+        <a href="Customer.html">Customer</a>
+        <a href="Mechanics.html">Mechanics</a>
+        <a href="Admin.html">Admin</a>
+	<a href="About.html">About us</a>
+	<a href="Contact.html">Contact us</a>
+    </nav>
+
+    <!-- Main Vehicle Image -->
+    <section class="hero">
+    </section>
+
+    <!-- Brand Logos -->
+    <section class="brands">
+
+        <h2>We Service All Major Vehicle Brands</h2>
+
+        <div class="brand-container">
+
+            <img src="Ford-Logo.png" alt="Ford">
+
+            <img src="Mahindra.png" alt="Mahindra">
+
+            <img src="Tvs.png" alt="TVS">
+
+            <img src="Tata.png" alt="Tata">
+
+            <img src="Hero-Logo.png" alt="Hero">
+
+            <img src="Suzuki-Logo.png" alt="Suzuki">
+
+            <img src="R.png" alt="Toyota">
+
+            <img src="bmw.png" alt="BMW">
+
+        </div>
+
+    </section>
+
+    <footer>
+        © 2026 Vehicle Service Management
+    </footer>
+
+</body>
+</html>
+<style>
+body {
+    min-height: 100vh;
+    background-image: url("v.jpeg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+</style>
+
+
+
+
+
+

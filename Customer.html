@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <h1 style="margin-top: 0; font-size:50px; 
+        color: pink; 
+	padding-left:20px; 
+	padding-right:20px; 
+	font-family:Arial; 
+	text-align:center; 
+	margin-bottom:20px; 
+	padding-top:20px; 
+	padding-bottom:20px; 
+	background-color: purple;">VEHICLE SERVICE MANAGEMENT</h1>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer - Vehicle Service Management</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f7e8ff, #e8f0ff);
+            color: #333;
+        }
+
+        /* Navigation Bar */
+
+        nav {
+            background: #24204f;
+            min-height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 50px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .logo {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 10px 14px;
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background: #a855f7;
+        }
+
+        /* Heading */
+
+        .heading {
+            text-align: center;
+            padding: 35px 20px 25px;
+        }
+
+        .heading h1 {
+            color: #24204f;
+            font-size: 36px;
+            margin-bottom: 8px;
+        }
+
+        .heading p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        /* Main Container */
+
+        .container {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto 45px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+        }
+
+        /* Form Cards */
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 22px rgba(0,0,0,0.12);
+        }
+
+        .card h2 {
+            color: #24204f;
+            text-align: center;
+            margin-bottom: 8px;
+            font-size: 26px;
+        }
+
+        .card .subtitle {
+            text-align: center;
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 25px;
+        }
+
+        /* Form */
+
+        .form-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 7px;
+            color: #444;
+            font-weight: bold;
+            font-size: 14px;
+        }
+
+        input,
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 9px;
+            font-size: 14px;
+            outline: none;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            border-color: #a855f7;
+            box-shadow: 0 0 5px rgba(168,85,247,0.25);
+        }
+
+        textarea {
+            height: 90px;
+            resize: none;
+        }
+
+        /* Button */
+
+        .btn {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 10px;
+            background: #a855f7;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 5px;
+        }
+
+        .btn:hover {
+            background: #7e22ce;
+            transform: translateY(-2px);
+        }
+
+        /* Customer Features */
+
+        .features {
+            width: 92%;
+            max-width: 1200px;
+            margin: 0 auto 45px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 17px;
+            text-align: center;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+
+        .feature:hover {
+            transform: translateY(-6px);
+        }
+
+        .feature-icon {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .feature h3 {
+            color: #24204f;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        /* Footer */
+
+        footer {
+            background: #181532;
+            color: white;
+            text-align: center;
+            padding: 22px;
+        }
+
+        footer p {
+            margin: 5px;
+        }
+
+        /* Responsive */
+
+        @media (max-width: 900px) {
+
+            nav {
+                padding: 15px 20px;
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 8px;
+            }
+
+            nav ul li a {
+                font-size: 13px;
+                padding: 8px;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+
+    <nav>
+
+        <div class="logo">
+            🚗 AutoCare
+        </div>
+
+        <ul>
+            <li><a href="Home.html">Home</a></li>
+            <li><a href="customer.html" class="active">Customer</a></li>
+            <li><a href="mechanics.html">Mechanics</a></li>
+            <li><a href="admin.html">Admin</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Heading -->
+
+    <section class="heading">
+
+        <h1>Customer Portal</h1>
+
+        <p>
+            Register your vehicle and book your service appointment easily
+        </p>
+
+    </section>
+
+
+    <!-- Registration + Booking -->
+
+    <section class="container">
+
+
+        <!-- Customer Registration -->
+
+        <div class="card">
+
+            <h2>👤 Customer Registration</h2>
+
+            <p class="subtitle">
+                Create your customer account
+            </p>
+
+            <form>
+
+                <div class="form-group">
+
+                    <label for="name">
+                        Full Name
+                    </label>
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="Enter your full name"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="Enter your email"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="phone">
+                        Phone Number
+                    </label>
+
+                    <input
+                        type="tel"
+                        id="phone"
+                        placeholder="Enter your phone number"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="address">
+                        Address
+                    </label>
+
+                    <input
+                        type="text"
+                        id="address"
+                        placeholder="Enter your address"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="Create password"
+                        required
+                    >
+
+                </div>
+
+
+                <button type="submit" class="btn">
+                    Register
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Book Service -->
+
+        <div class="card">
+
+            <h2>🔧 Book Vehicle Service</h2>
+
+            <p class="subtitle">
+                Schedule your vehicle service appointment
+            </p>
+
+            <form>
+
+                <div class="form-group">
+
+                    <label for="vehicle">
+                        Vehicle Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="vehicle"
+                        placeholder="Example: AP 07 AB 1234"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="model">
+                        Vehicle Model
+                    </label>
+
+                    <input
+                        type="text"
+                        id="model"
+                        placeholder="Example: Hyundai Creta"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="service">
+                        Service Type
+                    </label>
+
+                    <select id="service" required>
+
+                        <option value="">
+                            Select Service
+                        </option>
+
+                        <option>
+                            General Service
+                        </option>
+
+                        <option>
+                            Oil Change
+                        </option>
+
+                        <option>
+                            Engine Service
+                        </option>
+
+                        <option>
+                            Brake Service
+                        </option>
+
+                        <option>
+                            Tyre Service
+                        </option>
+
+                        <option>
+                            Battery Service
+                        </option>
+
+                        <option>
+                            AC Service
+                        </option>
+
+                        <option>
+                            Full Vehicle Service
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="date">
+                        Preferred Date
+                    </label>
+
+                    <input
+                        type="date"
+                        id="date"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="time">
+                        Preferred Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="time"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="problem">
+                        Vehicle Problem / Description
+                    </label>
+
+                    <textarea
+                        id="problem"
+                        placeholder="Describe the problem with your vehicle..."
+                    ></textarea>
+
+                </div>
+
+
+                <button type="submit" class="btn">
+                    Book Service
+                </button>
+
+            </form>
+
+        </div>
+
+    </section>
+
+
+    <!-- Customer Features -->
+
+    <section class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📅
+            </div>
+
+            <h3>Easy Booking</h3>
+
+            <p>
+                Book your vehicle service appointment
+                quickly and conveniently.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔧
+            </div>
+
+            <h3>Professional Service</h3>
+
+            <p>
+                Get your vehicle service request
+                managed by skilled mechanics.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📋
+            </div>
+
+            <h3>Service Tracking</h3>
+
+            <p>
+                Keep track of your service requests
+                and vehicle maintenance records.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>
+            © 2026 Vehicle Service Management System
+        </p>
+
+        <p>
+            Reliable Service • Easy Booking • Better Vehicle Care
+        </p>
+
+    </footer>
+
+</body>
+</html>
